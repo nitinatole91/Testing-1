@@ -77,7 +77,7 @@ public class UserController {
 
 
 	@GetMapping("/newChanges")
-	public ResponseEntity<String> getString() {
+	public ResponseEntity<String> getNewString() {
 
 		return ResponseEntity.ok("This is the new file changes");
 	}
