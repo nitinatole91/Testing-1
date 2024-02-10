@@ -59,7 +59,7 @@ public class UserController {
 	}
 
 	@PostMapping("/saveUserPolicy")
-	public ResponseEntity<User> saveUserPolicy(@RequestBody User user)throws Exception {
+	public ResponseEntity<User> saveUserPolicy(@RequestBody User user) throws Exception {
 		User user1 = userService.newUser(user);
 		List<Policy> policies = user.getPolicyList();
 		for (Policy policy : policies) {
@@ -67,5 +67,18 @@ public class UserController {
 			policyService.savePolicy(policy);
 		}
 		return ResponseEntity.ok().body(user1);
+	}
+
+	@GetMapping("/getData")
+	public ResponseEntity<String> getString() {
+
+		return ResponseEntity.ok("Hello java");
+	}
+
+
+	@GetMapping("/newChanges")
+	public ResponseEntity<String> getNewString() {
+
+		return ResponseEntity.ok("This is the new file changes");
 	}
 }
