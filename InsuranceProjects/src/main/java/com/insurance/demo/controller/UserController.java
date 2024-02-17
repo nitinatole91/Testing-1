@@ -75,7 +75,11 @@ public class UserController {
 		return ResponseEntity.ok("Hello java");
 	}
 
+	@GetMapping("/newChanges1")
+	public ResponseEntity<String> getNew2String() {
 
+		return ResponseEntity.ok("This is the new file changes");
+	}
 	@GetMapping("/newChanges")
 	public ResponseEntity<String> getNewString() {
 
