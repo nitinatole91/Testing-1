@@ -9,6 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="userData")
@@ -18,16 +22,24 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id ;
-	
+	@NotNull
 	@Column(name="firstname")
 	private String firstName;
+	@NotNull
 	@Column(name = "lastname")
 	private String lastName;
+
+	@Email(message = "Email is not valid !!")
 	@Column(name = "useremail")
 	private String userEmail;
 	@Column(name = "username")
+	
+	@org.hibernate.validator.constraints.NotEmpty
+	@Size(min = 4,message = "the UserName is not valid grow the size !")
 	private String userName;
 	@Column(name = "userage")
+	@NotEmpty
+//	@Size(max = 2,message = "the Age is not valid, the enter size two degit !")
 	private Integer userAge;
 	@Column(name = "gender")
 	private Character gender;

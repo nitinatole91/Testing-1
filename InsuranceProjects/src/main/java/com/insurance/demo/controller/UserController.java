@@ -17,6 +17,8 @@ import com.insurance.demo.entities.User;
 import com.insurance.demo.service.PolicyService;
 import com.insurance.demo.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -39,7 +41,7 @@ public class UserController {
 
 	// This method is save new user to the insurance system.
 	@PostMapping("/save")
-	public ResponseEntity<User> createNewUser(@RequestBody User user) throws Exception {
+	public ResponseEntity<User> createNewUser(@Valid @RequestBody User user) throws Exception {
 		User users = userService.newUser(user);
 		return ResponseEntity.ok().body(users);
 	}
@@ -59,7 +61,7 @@ public class UserController {
 	}
 
 	@PostMapping("/saveUserPolicy")
-	public ResponseEntity<User> saveUserPolicy(@RequestBody User user) throws Exception {
+	public ResponseEntity<User> saveUserPolicy(@Valid @RequestBody User user) throws Exception {
 		User user1 = userService.newUser(user);
 		List<Policy> policies = user.getPolicyList();
 		for (Policy policy : policies) {
@@ -78,6 +80,11 @@ public class UserController {
 
 	@GetMapping("/newChanges")
 	public ResponseEntity<String> getNewString() {
+
+		return ResponseEntity.ok("This is the new file changes");
+	}
+	@GetMapping("/newChanges1")
+	public ResponseEntity<String> getNewString1() {
 
 		return ResponseEntity.ok("This is the new file changes");
 	}
